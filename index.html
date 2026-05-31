@@ -84,11 +84,11 @@
     <main style="height: 5000px">
       <!-- hero -->
       <section id="hero" class="mt-12.5 lg:mt-15">
-        <div class="container lg:flex ">
+        <div class="container gap-x-[156px] lg:flex">
           <!-- content -->
-          <section class="lg:order-2 lg:mt-42 ml-39">
+          <section class="lg:order-2 lg:mt-[137px]">
             <h1
-              class="text-5xl leading-12.5 font-medium text-gray-950 lg:text-7xl lg:leading-[76px]"
+              class="max-w-full text-5xl leading-12.5 font-medium text-gray-950 lg:text-7xl lg:leading-[76px]"
             >
               An Interactive Designer
             </h1>
@@ -137,19 +137,33 @@
           </section>
 
           <!-- media -->
-          <div class="relative mt-5 lg:order-1 lg:w-[514px]">
-            <picture class="flex justify-center">
-              <source
-                media="(min-width: 768px)"
-                srcset="./assets/images/hero-avt-large.png"
-              />
+          <div class="mt-5">
+            <!-- Mobile media -->
+            <figure class="relative lg:hidden">
               <img
+                class="relative z-10 mx-auto h-full w-64 object-cover"
                 src="./assets/images/hero-avt-sm.png"
                 alt=""
-                class="h-[346px] w-[259px] object-center lg:h-[705px] lg:w-full"
               />
-            </picture>
-            <img src="" alt="" />
+              <img
+                class="absolute bottom-0 left-1/2 -translate-x-1/2"
+                src="./assets/images/hero-decor-01.svg"
+                alt=""
+              />
+            </figure>
+            <!-- Desktop media -->
+            <figure class="relative hidden w-[518px] lg:block">
+              <img
+                class="relative z-10 h-[705px] w-128.5 object-cover"
+                src="./assets/images/hero-avt-large.png"
+                alt=""
+              />
+              <img
+                class="absolute bottom-0 -left-[180px]  min-w-[836px] h-auto"
+                src="./assets/images/hero-decor-lg-01.svg"
+                alt=""
+              />
+            </figure>
           </div>
         </div>
       </section>
