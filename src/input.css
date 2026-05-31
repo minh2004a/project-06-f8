@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* font */
+  --font-family-sans: "DM Sans", sans-serif;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    font-family: var(--font-family-sans);
+    overflow-x: hidden;
+  }
+}
+
+@utility container {
+  width: calc(100% - 40px);
+  margin-inline: auto;
+  @media (width >= theme(--breakpoint-lg)) {
+    max-width: 1170px;
+    width: calc(100% - 30px);
+  }
+}

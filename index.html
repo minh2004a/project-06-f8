@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project06</title>
+    <link href="./src/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div
+        class="relative container mx-auto flex items-center pt-5 pb-4 after:absolute after:right-2 after:bottom-0 after:left-2 after:h-px after:bg-gray-300 lg:max-w-332.5 lg:py-6 lg:after:hidden"
+      >
+        <div
+          class="order-2 ml-auto flex items-center gap-x-2.5 lg:order-1 lg:ml-0 lg:w-1/3 lg:justify-start"
+        >
+          <div
+            class="flex size-8 items-center justify-center rounded-full border border-indigo-600/20"
+          >
+            <img
+              class="h-2.5 w-4"
+              src="./assets/icons/letter.svg"
+              alt="letter"
+            />
+          </div>
+          <a
+            class="hidden text-xl leading-8 font-medium text-gray-950 underline lg:inline-block"
+            href="#!"
+          >
+            huynhminhriot1@gmail.com
+          </a>
+        </div>
+
+        <div class="order-1 lg:order-2 lg:flex lg:w-1/3 lg:justify-center">
+          <img src="./assets/icons/memoji-boy.svg" alt="memoji" />
+        </div>
+
+        <div
+          class="order-3 ml-2.5 flex items-center lg:order-3 lg:ml-0 lg:w-1/3 lg:justify-end"
+        >
+          <!-- hambuger menu mobile -->
+          <button
+            class="flex size-8 items-center justify-center rounded-full border border-indigo-600/20 lg:hidden"
+          >
+            <img src="./assets/icons/hambuger-menu.svg" alt="menu" />
+          </button>
+
+          <!-- nav on desktop -->
+          <nav class="hidden lg:flex">
+            <a
+              class="inline-flex flex-col items-center px-4 text-lg font-normal text-gray-600 after:invisible after:h-0 after:overflow-hidden after:font-semibold after:content-[attr(data-text)] hover:font-semibold"
+              data-text="Projects"
+              href="#!"
+            >
+              Projects
+            </a>
+            <a
+              class="inline-flex flex-col items-center px-4 text-lg font-normal text-gray-600 after:invisible after:h-0 after:overflow-hidden after:font-semibold after:content-[attr(data-text)] hover:font-semibold"
+              data-text="Journey"
+              href="#!"
+            >
+              Journey
+            </a>
+            <a
+              class="inline-flex flex-col items-center px-4 text-lg font-normal text-gray-600 after:invisible after:h-0 after:overflow-hidden after:font-semibold after:content-[attr(data-text)] hover:font-semibold"
+              data-text="Service"
+              href="#!"
+            >
+              Service
+            </a>
+            <a
+              class="inline-flex flex-col items-center px-4 text-lg font-normal text-gray-600 after:invisible after:h-0 after:overflow-hidden after:font-semibold after:content-[attr(data-text)] hover:font-semibold"
+              data-text="Contact"
+              href="#!"
+            >
+              Contact
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main style="height: 5000px">
+      <!-- hero -->
+      <section id="hero" class="mt-12.5 lg:mt-15">
+        <div class="container lg:flex ">
+          <!-- content -->
+          <section class="lg:order-2 lg:mt-42 ml-39">
+            <h1
+              class="text-5xl leading-12.5 font-medium text-gray-950 lg:text-7xl lg:leading-[76px]"
+            >
+              An Interactive Designer
+            </h1>
+            <p
+              class="mt-5 max-w-79.5 text-base leading-6 font-normal text-gray-600 lg:max-w-[370px] lg:text-lg lg:leading-8"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In urna,
+              non nisl tincidunt ut elementum turpis.
+            </p>
+            <div class="mt-7 flex items-center gap-x-10 lg:mt-12.5">
+              <button
+                class="min-w-36 cursor-pointer bg-indigo-600 text-base leading-13.5 font-bold text-white"
+              >
+                Book a Call
+              </button>
+              <a
+                href="#!"
+                class="text-base leading-8 font-bold text-gray-950 underline"
+                >My Works</a
+              >
+            </div>
+            <div class="mt-6 flex items-center gap-x-2.5 lg:mt-26">
+              <span class="text-sm leading-5 font-medium text-gray-600"
+                >Follow me on:</span
+              >
+              <div class="flex items-center gap-x-4">
+                <div
+                  class="flex size-8 items-center justify-center rounded-full border border-gray-950/10"
+                >
+                  <img src="./assets/icons/be-hero.svg" alt="" />
+                </div>
+
+                <div
+                  class="flex size-8 items-center justify-center rounded-full border border-gray-950/10"
+                >
+                  <img src="./assets/icons/basketball.svg" alt="" />
+                </div>
+
+                <div
+                  class="flex size-8 items-center justify-center rounded-full border border-gray-950/10"
+                >
+                  <img src="./assets/icons/instagram.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- media -->
+          <div class="relative mt-5 lg:order-1 lg:w-[514px]">
+            <picture class="flex justify-center">
+              <source
+                media="(min-width: 768px)"
+                srcset="./assets/images/hero-avt-large.png"
+              />
+              <img
+                src="./assets/images/hero-avt-sm.png"
+                alt=""
+                class="h-[346px] w-[259px] object-center lg:h-[705px] lg:w-full"
+              />
+            </picture>
+            <img src="" alt="" />
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>
