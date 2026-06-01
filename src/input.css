@@ -22,6 +22,6 @@
   margin-inline: auto;
   @media (width >= theme(--breakpoint-lg)) {
     max-width: 1170px;
-    width: calc(100% - 30px);
+    width: calc(100% - 24px);
   }
 }

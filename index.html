@@ -86,14 +86,16 @@
       <section id="hero" class="mt-12.5 lg:mt-15">
         <div class="container gap-x-[156px] lg:flex">
           <!-- content -->
-          <section class="lg:order-2 lg:mt-[137px]">
+          <section
+            class="md:flex md:flex-col md:items-center lg:order-2 lg:mt-[137px] lg:block"
+          >
             <h1
               class="max-w-full text-5xl leading-12.5 font-medium text-gray-950 lg:text-7xl lg:leading-[76px]"
             >
               An Interactive Designer
             </h1>
             <p
-              class="mt-5 max-w-79.5 text-base leading-6 font-normal text-gray-600 lg:max-w-[370px] lg:text-lg lg:leading-8"
+              class="mt-5 max-w-79.5 text-base leading-6 font-normal text-gray-600 md:text-center lg:max-w-[370px] lg:text-left lg:text-lg lg:leading-8"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In urna,
               non nisl tincidunt ut elementum turpis.
@@ -159,11 +161,78 @@
                 alt=""
               />
               <img
-                class="absolute bottom-0 -left-[180px]  min-w-[836px] h-auto"
+                class="absolute bottom-0 -left-[180px] h-auto min-w-[836px]"
                 src="./assets/images/hero-decor-lg-01.svg"
                 alt=""
               />
             </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- social -->
+      <section id="social" class="mt-31.25 md:mt-25">
+        <div class="container">
+          <div class="items-center justify-between lg:flex">
+            <!-- Section Title -->
+            <div class="text-center lg:mx-0 lg:flex lg:gap-x-3 lg:text-left">
+              <span
+                class="mt-5.5 inline-block h-0.5 w-12 bg-[#5D3BEE] lg:min-w-20"
+              ></span>
+              <h2
+                class="mx-auto w-50 text-3xl leading-8 font-medium text-gray-950 lg:min-w-75 lg:text-5xl lg:leading-[50px]"
+              >
+                Meet my recent clients
+              </h2>
+            </div>
+
+            <!-- Client Logos -->
+            <div
+              class="mt-10.5 grid grid-cols-2 gap-y-8.5 md:place-content-start md:place-items-center lg:mt-0 lg:w-full lg:max-w-178.25 lg:grid-cols-4 lg:gap-x-10"
+            >
+              <div class="flex items-center gap-x-3 lg:order-0">
+                <img src="./assets/icons/google.svg" alt="google" />
+                <span class="font-semibold">Google</span>
+              </div>
+
+              <div class="flex items-center gap-x-3 lg:order-1">
+                <img src="./assets/icons/warner-bros.svg" alt="warner Bros" />
+                <span class="font-semibold">Warner Bros</span>
+              </div>
+
+              <div class="flex items-center gap-x-3 lg:order-4">
+                <img src="./assets/icons/upwork.svg" alt="upwork" />
+                <span class="font-semibold">Upwork</span>
+              </div>
+
+              <div class="flex items-center gap-x-3 lg:order-5">
+                <img
+                  src="./assets/icons/creative-cloud.svg"
+                  alt="creative cloud"
+                />
+                <span class="font-semibold">Creative Cloud</span>
+              </div>
+
+              <div class="flex items-center gap-x-3 lg:order-2">
+                <img src="./assets/icons/mailchimp.svg" alt="mailchimp" />
+                <span class="font-semibold">Mailchimp</span>
+              </div>
+
+              <div class="ml-10 flex items-center gap-x-3 lg:order-3 lg:ml-0">
+                <img src="./assets/icons/adobe.svg" alt="adobe" />
+                <span class="font-semibold">Adobe</span>
+              </div>
+
+              <div class="flex items-center gap-x-3 lg:order-6">
+                <img src="./assets/icons/woo.svg" alt="wooCommerce" />
+                <span class="font-semibold">WooCommerce</span>
+              </div>
+
+              <div class="ml-10 flex items-center gap-x-3 lg:order-7 lg:ml-0">
+                <img src="./assets/icons/canva.svg" alt="canva" />
+                <span class="font-semibold">Canva</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
