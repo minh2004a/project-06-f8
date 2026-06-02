@@ -15,6 +15,21 @@
     font-family: var(--font-family-sans);
     overflow-x: hidden;
   }
+
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply min-w-36.75 text-base leading-13.75 font-bold text-[#fdfdfd];
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700;
+  }
+
 }
 
 @utility container {
