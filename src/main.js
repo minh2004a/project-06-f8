@@ -1,4 +1,5 @@
 const specialityList = document.querySelector("#speciality-list");
+const specialitySlider = document.querySelector("#speciality-slider");
 const dots = document.querySelectorAll("#dots button");
 const desktopMedia = window.matchMedia("(min-width: 1024px)");
 const hamburgerButton = document.querySelector("#hambuger-menu");
@@ -24,6 +25,18 @@ let touchStartX = 0;
 let touchStartY = 0;
 let isAnimating = false;
 let mobileMenuCloseTimer;
+let transitionFallbackTimer;
+
+function addDesktopChangeListener(callback) {
+  if (desktopMedia.addEventListener) {
+    desktopMedia.addEventListener("change", callback);
+    return;
+  }
+
+  if (desktopMedia.addListener) {
+    desktopMedia.addListener(callback);
+  }
+}
 
 function openMobileMenu() {
   if (!hamburgerButton || !mobileMenu || !mobileMenuOverlay) return;
@@ -71,7 +84,7 @@ function setupInfiniteCards() {
 
   specialityList.prepend(lastClone);
   specialityList.append(firstClone);
-  specialityList.style.touchAction = "pan-y";
+  specialitySlider.style.touchAction = "pan-y";
 }
 
 function syncCloneVisibility() {
@@ -109,6 +122,25 @@ function jumpToTrackIndex(index) {
   specialityList.style.transition = "";
 }
 
+function finishSpecialityTransition() {
+  clearTimeout(transitionFallbackTimer);
+
+  if (trackIndex === 0) {
+    jumpToTrackIndex(slideCount);
+  }
+
+  if (trackIndex === slideCount + 1) {
+    jumpToTrackIndex(1);
+  }
+
+  isAnimating = false;
+}
+
+function startSpecialityTransitionFallback() {
+  clearTimeout(transitionFallbackTimer);
+  transitionFallbackTimer = setTimeout(finishSpecialityTransition, 400);
+}
+
 function getLoopedIndex(index) {
   if (!slideCount) return 0;
 
@@ -129,6 +161,7 @@ function setActiveCard(index, { withTransition = true } = {}) {
   if (shouldAnimate) {
     isAnimating = true;
     moveSpecialityList();
+    startSpecialityTransitionFallback();
     return;
   }
 
@@ -144,6 +177,7 @@ function showNextCard() {
 
   updateDots();
   moveSpecialityList();
+  startSpecialityTransitionFallback();
 }
 
 function showPreviousCard() {
@@ -155,22 +189,18 @@ function showPreviousCard() {
 
   updateDots();
   moveSpecialityList();
+  startSpecialityTransitionFallback();
 }
 
 function handleTransitionEnd(event) {
-  if (event.target !== specialityList || event.propertyName !== "transform") {
+  if (
+    event.target !== specialityList ||
+    !event.propertyName.includes("transform")
+  ) {
     return;
   }
 
-  if (trackIndex === 0) {
-    jumpToTrackIndex(slideCount);
-  }
-
-  if (trackIndex === slideCount + 1) {
-    jumpToTrackIndex(1);
-  }
-
-  isAnimating = false;
+  finishSpecialityTransition();
 }
 
 function handleBreakpointChange() {
@@ -185,15 +215,16 @@ dots.forEach((dot, index) => {
   });
 });
 
-if (specialityList && slideCount > 1) {
+if (specialityList && specialitySlider && slideCount > 1) {
   setupInfiniteCards();
   syncCloneVisibility();
   jumpToTrackIndex(trackIndex);
   updateDots();
 
   specialityList.addEventListener("transitionend", handleTransitionEnd);
+  specialityList.addEventListener("webkitTransitionEnd", handleTransitionEnd);
 
-  specialityList.addEventListener("touchstart", (event) => {
+  specialitySlider.addEventListener("touchstart", (event) => {
     if (desktopMedia.matches) return;
 
     const touch = event.touches[0];
@@ -202,7 +233,24 @@ if (specialityList && slideCount > 1) {
     touchStartY = touch.clientY;
   });
 
-  specialityList.addEventListener("touchend", (event) => {
+  specialitySlider.addEventListener(
+    "touchmove",
+    (event) => {
+      if (desktopMedia.matches) return;
+
+      const touch = event.touches[0];
+      const distanceX = touch.clientX - touchStartX;
+      const distanceY = touch.clientY - touchStartY;
+      const isHorizontalSwipe = Math.abs(distanceX) > Math.abs(distanceY);
+
+      if (isHorizontalSwipe && Math.abs(distanceX) > 8) {
+        event.preventDefault();
+      }
+    },
+    { passive: false },
+  );
+
+  specialitySlider.addEventListener("touchend", (event) => {
     if (desktopMedia.matches) return;
 
     const touch = event.changedTouches[0];
@@ -221,14 +269,22 @@ if (specialityList && slideCount > 1) {
     }
   });
 
-  desktopMedia.addEventListener("change", handleBreakpointChange);
+  addDesktopChangeListener(handleBreakpointChange);
 } else {
   updateDots();
 }
 
-hamburgerButton?.addEventListener("click", openMobileMenu);
-mobileMenuCloseButton?.addEventListener("click", closeMobileMenu);
-mobileMenuOverlay?.addEventListener("click", closeMobileMenu);
+if (hamburgerButton) {
+  hamburgerButton.addEventListener("click", openMobileMenu);
+}
+
+if (mobileMenuCloseButton) {
+  mobileMenuCloseButton.addEventListener("click", closeMobileMenu);
+}
+
+if (mobileMenuOverlay) {
+  mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+}
 
 mobileMenuLinks.forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
@@ -240,7 +296,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-desktopMedia.addEventListener("change", () => {
+addDesktopChangeListener(() => {
   if (desktopMedia.matches) {
     closeMobileMenu();
   }
