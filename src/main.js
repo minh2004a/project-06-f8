@@ -25,7 +25,7 @@ let touchStartX = 0;
 let touchStartY = 0;
 let isAnimating = false;
 let mobileMenuCloseTimer;
-let transitionFallbackTimer;
+let transitionFallbackTimer;    
 
 function addDesktopChangeListener(callback) {
   if (desktopMedia.addEventListener) {
