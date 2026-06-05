@@ -13,9 +13,7 @@ const activeDotClass =
 const inactiveDotClass = "size-4 rounded-full bg-gray-950/20";
 const minSwipeDistance = 50;
 
-const originalCards = specialityList
-  ? Array.from(specialityList.children)
-  : [];
+const originalCards = specialityList ? Array.from(specialityList.children) : [];
 const slideCount = originalCards.length;
 const clonedCards = [];
 
@@ -25,7 +23,7 @@ let touchStartX = 0;
 let touchStartY = 0;
 let isAnimating = false;
 let mobileMenuCloseTimer;
-let transitionFallbackTimer;    
+let transitionFallbackTimer;
 
 function addDesktopChangeListener(callback) {
   if (desktopMedia.addEventListener) {
@@ -300,4 +298,15 @@ addDesktopChangeListener(() => {
   if (desktopMedia.matches) {
     closeMobileMenu();
   }
+});
+
+// PLay video
+
+const videoCover = document.querySelector("#videoCover");
+const mainVideo = document.querySelector("#mainVideo");
+
+videoCover.addEventListener("click", () => {
+  videoCover.classList.add("hidden");
+  mainVideo.classList.remove("hidden");
+  mainVideo.play();
 });
